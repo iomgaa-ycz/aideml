@@ -12,6 +12,7 @@ from aide.backend.utils import (
 )
 from funcy import notnone, once, select_values
 import openai
+import os
 
 logger = logging.getLogger("aide")
 

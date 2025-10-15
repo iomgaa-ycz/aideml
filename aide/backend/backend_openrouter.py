@@ -29,8 +29,8 @@ OPENAI_TIMEOUT_EXCEPTIONS = (
 def _setup_openrouter_client():
     global _client
     _client = openai.OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=os.getenv("OPENROUTER_API_KEY"),
+        base_url=os.getenv("OPENAI_BASE_URL"),
+        api_key=os.getenv("OPENAI_API_KEY"),
         max_retries=0,
     )
 
