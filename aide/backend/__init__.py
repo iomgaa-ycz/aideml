@@ -14,7 +14,7 @@ def determine_provider(model: str) -> str:
         return "gdm"
     # all other models are handle by openrouter
     else:
-        return "openrouter"
+        return "openai"
 
 
 provider_to_query_func = {
