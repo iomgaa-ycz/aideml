@@ -29,7 +29,18 @@ OPENAI_TIMEOUT_EXCEPTIONS = (
 @once
 def _setup_openai_client():
     global _client
-    _client = openai.OpenAI(max_retries=0)
+    # 从环境变量获取配置
+    base_url = os.environ.get("OPENAI_BASE_URL")
+    api_key = os.environ.get("OPENAI_API_KEY")  # 显式获取 API key
+    
+    # 构建参数字典
+    client_kwargs = {"max_retries": 0}
+    if base_url:
+        client_kwargs["base_url"] = base_url
+    if api_key:
+        client_kwargs["api_key"] = api_key
+    
+    _client = openai.OpenAI(**client_kwargs)
 
 
 def query(
